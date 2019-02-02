@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Arc?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#MainGame" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SensoPackage.Controller">
+   <children>
+      <Arc fx:id="Blau" fill="DODGERBLUE" layoutX="299.0" layoutY="199.0" length="90.0" radiusX="81.0" radiusY="81.0" startAngle="90.0" stroke="BLACK" strokeMiterLimit="5.0" type="ROUND" />
+      <Arc fx:id="Grün" fill="#1bd31e" layoutX="382.0" layoutY="199.0" length="90.0" radiusX="81.0" radiusY="81.0" rotate="90.0" startAngle="90.0" stroke="BLACK" strokeMiterLimit="5.0" type="ROUND" />
+      <Arc fx:id="Rot" fill="#ff0900" layoutX="299.0" layoutY="201.0" length="90.0" radiusX="81.0" radiusY="81.0" startAngle="180.0" stroke="BLACK" strokeMiterLimit="5.0" type="ROUND" />
+      <Arc fx:id="Gelb" fill="#f2ff00" layoutX="382.0" layoutY="282.0" length="90.0" radiusX="81.0" radiusY="81.0" rotate="180.0" startAngle="90.0" stroke="BLACK" strokeMiterLimit="5.0" type="ROUND" />
+      <Button layoutX="383.0" layoutY="117.0" mnemonicParsing="false" onAction="#GameLogick" style="-fx-background-color: #4286f4;" text="Bereit?" />
+      <ComboBox fx:id="Wieviele" layoutX="436.0" layoutY="14.0" prefWidth="150.0" promptText="Wv hintereinander" />
+      <Button layoutX="383.0" layoutY="14.0" mnemonicParsing="false" onAction="#Check" text="Fertig?" />
+   </children>
+</AnchorPane>
