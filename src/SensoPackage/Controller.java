@@ -1,3 +1,10 @@
+/*
+ *
+ * lonely code by JanFre
+ * Dies ist ein Produkt der Langeweile.
+ *
+ */
+
 package SensoPackage;
 
 import javafx.collections.FXCollections;
@@ -5,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.shape.Arc;
-
 import java.util.*;
 
 public class Controller {
@@ -13,9 +19,7 @@ public class Controller {
     Arc Rot, Blau, Grün, Gelb;
     @FXML
     ComboBox Wieviele;
-
     private boolean init = true;
-
     private int anzahl = 1;
     private int zähler = 0;
     private ArrayList<Integer> Reihenfolge = new ArrayList<Integer>();
@@ -71,7 +75,7 @@ public class Controller {
                 }, 800);
             });
             ObservableList<String> options = FXCollections.observableArrayList(
-                    "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"
+                    "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11" //TODO
             );
             Wieviele.setItems(options);
             init = false;
@@ -120,12 +124,12 @@ public class Controller {
             if (Reihenfolge.get(i).intValue() == EingebeListe.get(i).intValue()) {
                 //System.out.println("IF:_1 " + Reihenfolge.get(i).intValue()+" : "+EingebeListe.get(i).intValue() +" :__" +i); Funktions kontrolle
                 if (Reihenfolge.size() - 1 == i) {
-                    System.out.println("You win");
+                    System.out.println("You win"); //TODO
                     Reihenfolge.clear();
                     EingebeListe.clear();
                 }
             } else {
-                System.out.println("You Lose");
+                System.out.println("You Lose"); //TODO
                 Reihenfolge.clear();
                 EingebeListe.clear();
             }
