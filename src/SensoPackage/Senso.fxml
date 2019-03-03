@@ -11,7 +11,7 @@
       <Arc fx:id="Grün" fill="#1bd31e" layoutX="382.0" layoutY="199.0" length="90.0" radiusX="81.0" radiusY="81.0" rotate="90.0" startAngle="90.0" stroke="BLACK" strokeMiterLimit="5.0" type="ROUND" />
       <Arc fx:id="Rot" fill="#ff0900" layoutX="299.0" layoutY="201.0" length="90.0" radiusX="81.0" radiusY="81.0" startAngle="180.0" stroke="BLACK" strokeMiterLimit="5.0" type="ROUND" />
       <Arc fx:id="Gelb" fill="#f2ff00" layoutX="382.0" layoutY="282.0" length="90.0" radiusX="81.0" radiusY="81.0" rotate="180.0" startAngle="90.0" stroke="BLACK" strokeMiterLimit="5.0" type="ROUND" />
-      <Button layoutX="383.0" layoutY="117.0" mnemonicParsing="false" onAction="#GameLogick" style="-fx-background-color: #4286f4;" text="Bereit?" />
+      <Button layoutX="383.0" layoutY="117.0" mnemonicParsing="false" onAction="#GameLogik" style="-fx-background-color: #4286f4;" text="Bereit?" />
       <ComboBox fx:id="Wieviele" layoutX="436.0" layoutY="14.0" prefWidth="150.0" promptText="Wv hintereinander" />
       <Button layoutX="383.0" layoutY="14.0" mnemonicParsing="false" onAction="#Check" text="Fertig?" />
    </children>

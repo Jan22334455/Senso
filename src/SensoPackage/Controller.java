@@ -11,7 +11,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Arc;
+import sun.security.krb5.internal.MethodData;
+
 import java.util.*;
 
 public class Controller {
@@ -26,8 +30,39 @@ public class Controller {
     private ArrayList<Arc> ArcListe = new ArrayList<>();
     private ArrayList<Integer> EingebeListe = new ArrayList<Integer>();
 
+    private ArrayList<MediaPlayer> loseL = new ArrayList<>();
+    private ArrayList<MediaPlayer> winL = new ArrayList<>();
+
+    private MediaPlayer mp1 = new MediaPlayer(new Media((getClass().getClassLoader().getResource("Sounds/ding-sound-effect_2.mp3").toString())));
+
+    private MediaPlayer lose1 = new MediaPlayer(new Media(getClass().getClassLoader().getResource("Sounds/lose.mp3").toString()));
+    private MediaPlayer lose2 = new MediaPlayer(new Media(getClass().getClassLoader().getResource("Sounds/retard-alert.mp3").toString()));
+    private MediaPlayer lose3 = new MediaPlayer(new Media(getClass().getClassLoader().getResource("Sounds/sad.mp3").toString()));
+
+    private MediaPlayer win1 = new MediaPlayer(new Media(getClass().getClassLoader().getResource("Sounds/careless_whispers.mp3").toString()));
+    private MediaPlayer win2 = new MediaPlayer(new Media(getClass().getClassLoader().getResource("Sounds/for-honor-incredibilis.mp3").toString()));
+    private MediaPlayer win3 = new MediaPlayer(new Media(getClass().getClassLoader().getResource("Sounds/victoryff.swf.mp3").toString()));
+
     public void MainGame() {
         if (init) {
+            loseL.add(lose1);
+            loseL.add(lose2);
+            loseL.add(lose3);
+
+            winL.add(win1);
+            winL.add(win2);
+            winL.add(win3);
+
+            for (MediaPlayer m : loseL) {
+
+            }
+            for (MediaPlayer m : winL) {
+
+            }
+
+            mp1.setVolume(0.07);
+            System.out.println(loseL.get(0).getVolume());
+
             System.out.println("Init");
             ArcListe.add(Rot); //0
             ArcListe.add(Blau);//1
@@ -35,6 +70,8 @@ public class Controller {
             ArcListe.add(Gelb);//3
             Timer t1 = new Timer();
             Rot.setOnMouseClicked(event -> {
+                mp1.stop();
+                mp1.play();
                 Rot.setOpacity(0.5);
                 EingebeListe.add(0);
                 t1.schedule(new TimerTask() {
@@ -45,6 +82,8 @@ public class Controller {
                 }, 800);
             });
             Blau.setOnMouseClicked(event -> {
+                mp1.stop();
+                mp1.play();
                 Blau.setOpacity(0.5);
                 EingebeListe.add(1);
                 t1.schedule(new TimerTask() {
@@ -55,6 +94,8 @@ public class Controller {
                 }, 800);
             });
             Grün.setOnMouseClicked(event -> {
+                mp1.stop();
+                mp1.play();
                 Grün.setOpacity(0.5);
                 EingebeListe.add(2);
                 t1.schedule(new TimerTask() {
@@ -65,6 +106,8 @@ public class Controller {
                 }, 800);
             });
             Gelb.setOnMouseClicked(event -> {
+                mp1.stop();
+                mp1.play();
                 Gelb.setOpacity(0.5);
                 EingebeListe.add(3);
                 t1.schedule(new TimerTask() {
@@ -79,6 +122,8 @@ public class Controller {
             );
             Wieviele.setItems(options);
             init = false;
+
+
         }
     }
 
@@ -88,6 +133,9 @@ public class Controller {
             @Override
             public void run() {
                 arc.setOpacity(0.5);
+                mp1.stop();
+                mp1.play();
+                //mp1.setAutoPlay(true);
                 t2.schedule(new TimerTask() {
                     @Override
                     public void run() {
@@ -98,7 +146,7 @@ public class Controller {
         }, 500);
     }
 
-    public void GameLogick() {
+    public void GameLogik() {
         Timer t3 = new Timer();
         anzahl = Wieviele.getSelectionModel().getSelectedIndex();
         t3.scheduleAtFixedRate(new TimerTask() {
@@ -120,21 +168,27 @@ public class Controller {
     public void Check() {
         System.out.println("Check");
         try {
-        for (int i = 0; i < Reihenfolge.size(); i++) {
-            if (Reihenfolge.get(i).intValue() == EingebeListe.get(i).intValue()) {
-                //System.out.println("IF:_1 " + Reihenfolge.get(i).intValue()+" : "+EingebeListe.get(i).intValue() +" :__" +i); Funktions kontrolle
-                if (Reihenfolge.size() - 1 == i) {
-                    System.out.println("You win"); //TODO
+            for (int i = 0; i < Reihenfolge.size(); i++) {
+                if (Reihenfolge.get(i).intValue() == EingebeListe.get(i).intValue()) {
+                    //System.out.println("IF:_1 " + Reihenfolge.get(i).intValue()+" : "+EingebeListe.get(i).intValue() +" :__" +i); Funktions kontrolle
+                    if (Reihenfolge.size() - 1 == i) {
+                        int x = randInt(0, 2);
+                        winL.get(x).stop();
+                        winL.get(x).play();
+                        System.out.println("You win"); //TODO
+                        Reihenfolge.clear();
+                        EingebeListe.clear();
+                    }
+                } else {
+                    int x = randInt(0, 2);
+                    loseL.get(x).stop();
+                    loseL.get(x).play();
+                    System.out.println("You Lose"); //TODO
                     Reihenfolge.clear();
                     EingebeListe.clear();
                 }
-            } else {
-                System.out.println("You Lose"); //TODO
-                Reihenfolge.clear();
-                EingebeListe.clear();
             }
-        }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             Reihenfolge.clear();
             EingebeListe.clear();
         }
